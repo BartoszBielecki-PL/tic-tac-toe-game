@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Player from './components/Player';
+import GameBoard from './components/GameBoard';
 
 function App() {
 
@@ -9,10 +10,10 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players">
-          <Player playerName='Player 1' playerSymbol='X' />
-          <Player playerName='Player 2' playerSymbol='O' />
+          <Player initialName='Player 1' playerSymbol='X' />
+          <Player initialName='Player 2' playerSymbol='O' />
         </ol>
-        GAME BOARD
+        <GameBoard />
       </div>
       LOG
     </main>
