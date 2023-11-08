@@ -6,15 +6,24 @@ const initialGameBoard = [
     [null, null, null]
 ];
 
-const GameBoard = () => {
+const GameBoard = ({ onSelectSquare, turns }) => {
+    let gameBoard = initialGameBoard;
+
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, column } = square;
+
+        gameBoard[row][column] = player;
+    }
+
     return (
         <ol id='game-board'>
-            {initialGameBoard.map((row, rowIndex) => (
+            {gameBoard.map((row, rowIndex) => (
                 <li key={rowIndex}>
                     <ol>
                         {row.map((playerSymbol, colIndex) => (
                             <li key={colIndex}>
-                                <button>{playerSymbol}</button>
+                                <button onClick={() => onSelectSquare(rowIndex, colIndex)} disabled={playerSymbol ? true : false} >{playerSymbol}</button>
                             </li>))}
                     </ol>
                 </li>))}
